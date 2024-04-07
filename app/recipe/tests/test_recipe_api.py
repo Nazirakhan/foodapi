@@ -15,7 +15,7 @@ from core.models import Recipe
 
 from recipe.serializers import (
     RecipeSerializer,
-    RecipeDetailsSerializer,
+    RecipeDetailSerializer,
 )
 
 RECIPE_URL = reverse('recipe:recipe-list')
@@ -97,8 +97,8 @@ class PrivateRecipeApiTests(TestCase):
         """test get_recipe_detail."""
         recipe = create_recipe(user=self.user)
 
-        url = detail_url(recipe_id)
+        url = detail_url(recipe.id)
         res = self.client.get(url)
 
-        serializer = RecipeDetailsSerializer(recipe)
+        serializer = RecipeDetailSerializer(recipe)
         self.assertEqual(res.data, serializer.data)
