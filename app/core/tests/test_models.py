@@ -7,6 +7,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from core import models
 
+
 class ModelTests(TestCase):
     """Test models"""
 
@@ -31,7 +32,7 @@ class ModelTests(TestCase):
             ['test4@example.com', 'test4@example.com'],
         ]
         for email, expected_email in sample_emails:
-            user = get_user_model().objects.create_user(email,'sample123')
+            user = get_user_model().objects.create_user(email, 'sample123')
             self.assertEqual(user.email, expected_email)
 
     def test_new_user_without_email_raises_error(self):
@@ -60,7 +61,7 @@ class ModelTests(TestCase):
             title='Sample recipe name',
             time_minutes=5,
             price=Decimal('5.50'),
-            description= 'Sample recipe description.'
+            description='Sample recipe description.'
         )
 
         self.assertEqual(str(recipe), recipe.title)

@@ -9,6 +9,7 @@ from core.models import Recipe
 from recipe import serializers
 # Create your views here.
 
+
 class RecipeViewSet(viewsets.ModelViewSet):
     """ view for manage recipe APIs."""
     serializer_class = serializers.RecipeSerializer

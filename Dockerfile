@@ -3,8 +3,8 @@ LABEL maintainer="devnazir"
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirement.txt ./tmp/requirement.txt
-COPY ./requirement.dev.txt ./tmp/requirement.dev.txt
+COPY ./requirement.txt /tmp/requirement.txt
+COPY ./requirement.dev.txt /tmp/requirement.dev.txt
 COPY ./app /app
 WORKDIR /app
 EXPOSE 8000
@@ -17,7 +17,7 @@ RUN python -m venv /py && \
         build-base postgresql-dev musl-dev && \
     /py/bin/pip install -r /tmp/requirement.txt && \
     if [ $DEV="true" ]; \
-        then /py/bin/pip install -r /tmp/requirement.txt ; \
+        then /py/bin/pip install -r /tmp/requirement.dev.txt ; \
     fi && \
     rm -rf /tmp && \
     apk del .tmp-build-deps && \

@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Register your models here.
 
+
 class UserAdmin(BaseUserAdmin):
     """Define the admin pages for users."""
     ordering = ['id']
@@ -29,7 +30,7 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ['last_login']
     add_fieldsets = (
         (None, {
-            'classes':('wide',),
+            'classes': ('wide',),
             'fields': (
                 'email',
                 'password1',
@@ -41,6 +42,7 @@ class UserAdmin(BaseUserAdmin):
             )
         }),
     )
+
 
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Recipe)

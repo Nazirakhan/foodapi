@@ -12,6 +12,7 @@ from django.contrib.auth.models import (
 
 # Create your models here.
 
+
 class UserManager(BaseUserManager):
     """Manager for users."""
 
@@ -34,6 +35,7 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system"""
     email = models.EmailField(max_length=255, unique=True)
@@ -45,6 +47,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
 
+
 class Recipe(models.Model):
     """Recipie object."""
     user = models.ForeignKey(
@@ -55,7 +58,7 @@ class Recipe(models.Model):
     description = models.TextField(blank=True)
     time_minutes = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    link = models.CharField(max_length=255,blank=True)
+    link = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.title
